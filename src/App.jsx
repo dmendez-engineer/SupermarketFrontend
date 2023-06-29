@@ -11,6 +11,9 @@ import Layout from './pages/Layout'
 import NewUser from './pages/NewUser'
 import 'react-toastify/dist/ReactToastify.css';
 import Admin from './pages/Admin';
+import Customer from './pages/Customer';
+
+
 
 function App() {
   const [count, setCount] = useState(0)
@@ -26,7 +29,10 @@ function App() {
         <Route index element={<Login/>}/>
         <Route path='register' element={<NewUser/>}/>
         <Route path='admin' element={<Admin/>}/>
+        <Route path='customer' element={<Customer/>}/>
+        
         </Route>
+       
     </Routes>
    
  

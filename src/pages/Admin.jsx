@@ -1,9 +1,11 @@
 /* eslint-disable no-unused-vars */
-import React from 'react'
+import {React, Fragment } from 'react'
+import { Link } from 'react-router-dom'
+import Menu from './Menu'
 
 function Admin() {
   return (
-    <div>Admin</div>
+    <Menu/>
   )
 }
 
