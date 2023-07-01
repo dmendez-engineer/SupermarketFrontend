@@ -12,6 +12,7 @@ import NewUser from './pages/NewUser'
 import 'react-toastify/dist/ReactToastify.css';
 import Admin from './pages/Admin';
 import Customer from './pages/Customer';
+import CustomerForm from './components/CustomerForm'
 
 
 
@@ -30,7 +31,7 @@ function App() {
         <Route path='register' element={<NewUser/>}/>
         <Route path='admin' element={<Admin/>}/>
         <Route path='customer' element={<Customer/>}/>
-        
+        <Route path='customer/customerRegister' element={<CustomerForm/>}/>
         </Route>
        
     </Routes>

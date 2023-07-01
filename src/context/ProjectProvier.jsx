@@ -7,6 +7,7 @@ import { createContext, useContext, useState,useEffect } from "react";
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
 import useProject from "../hooks/useProject";
+import { toast } from "react-toastify";
 
 
 const ProjectContext=createContext();
@@ -40,18 +41,38 @@ const ProjectProvider=({children})=>{
     const handleSubmitCreateUser=(user)=>{
         console.log("Receiving the user in the provider: ",user);
     }
+    const handlePostCustomer=async(customer)=>{
+
+        console.log(customer);
+        try {
+            const urlPost='https://localhost:7066/api/Customer/postCustomer';
+            const {data}=await axios.post(urlPost,customer);
+            console.log(data);
+            if(data.sucess==="200"){
+                alert(data.text);
+            }else{
+                alert(data.text);
+            }
+
+        } catch (error) {
+            console.log("Error: ",error);
+        }
+
+    }
     return(
         <ProjectContext.Provider
         value={
             {
                 proof:proof,
                 handleSubmitCreateUser:handleSubmitCreateUser,
-                customers:customers
+                customers:customers,
+                handlePostCustomer:handlePostCustomer
             }
         }
         >
         {children}
         </ProjectContext.Provider>
+        
     )
 }
 export{
