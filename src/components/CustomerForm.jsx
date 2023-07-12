@@ -1,17 +1,29 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-empty */
 /* eslint-disable no-unused-vars */
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import Menu from '../pages/Menu';
 import useProject from '../hooks/useProject';
 import { ToastContainer, toast } from 'react-toastify';
 
 function CustomerForm() {
 
-    const {handlePostCustomer}=useProject();
+    const {handlePostCustomer,customerSelected}=useProject();
     
     const[name,setName]=useState('');
     const[lastName,setLastName]=useState('');
     const[email,setEmail]=useState('');
     const[nid,setNid]=useState('');
+
+
+    useEffect(()=>{
+        if(customerSelected.id!==undefined){
+            setName(customerSelected.name);
+            setLastName(customerSelected.lastName);
+            setEmail(customerSelected.email);
+            setNid(customerSelected.nid);
+        }
+    },[]);
 
     const handleSubmit=(e)=>{
         e.preventDefault();

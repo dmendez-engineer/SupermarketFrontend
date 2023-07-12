@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 function Customer() {
   const {customers}=useProject();
 
- // console.log("From CUstomers: ",customers);
+
   return (
     <Fragment>
         <Menu/>

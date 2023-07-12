@@ -17,7 +17,7 @@ const ProjectContext=createContext();
 
 const ProjectProvider=({children})=>{
     const [proof,setProof]=useState('Proof AGAIN');
-
+    const [customerSelected,setCustomerSelected]=useState({});
 
     const[customers,setCustomers]=useState([]);
     const url=`https://localhost:7066/api/Customer`;
@@ -40,6 +40,11 @@ const ProjectProvider=({children})=>{
 
     const handleSubmitCreateUser=(user)=>{
         console.log("Receiving the user in the provider: ",user);
+    }
+    const handleSelectCustomer=(customer)=>{
+        
+        setCustomerSelected(customer);
+
     }
     const handlePostCustomer=async(customer)=>{
 
@@ -66,7 +71,9 @@ const ProjectProvider=({children})=>{
                 proof:proof,
                 handleSubmitCreateUser:handleSubmitCreateUser,
                 customers:customers,
-                handlePostCustomer:handlePostCustomer
+                handlePostCustomer:handlePostCustomer,
+                handleSelectCustomer:handleSelectCustomer,
+                customerSelected:customerSelected
             }
         }
         >
