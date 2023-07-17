@@ -8,21 +8,30 @@ import { ToastContainer, toast } from 'react-toastify';
 
 function CustomerForm() {
 
-    const {handlePostCustomer,customerSelected}=useProject();
-    
+    const {handlePostCustomer,customerSelected,setCustomerSelected}=useProject();
+    const [text,setText]=useState('Add User');
     const[name,setName]=useState('');
     const[lastName,setLastName]=useState('');
     const[email,setEmail]=useState('');
     const[nid,setNid]=useState('');
-
+    const [id,setId]=useState(null);
 
     useEffect(()=>{
+        
         if(customerSelected.id!==undefined){
             setName(customerSelected.name);
             setLastName(customerSelected.lastName);
             setEmail(customerSelected.email);
             setNid(customerSelected.nid);
+            setId(customerSelected.id);
+        }else{
+            setName('');
+            setLastName('');
+            setEmail('');
+            setNid('');
+            setId(null);
         }
+        setCustomerSelected({});
     },[]);
 
     const handleSubmit=(e)=>{
@@ -33,6 +42,7 @@ function CustomerForm() {
             return;
         }
         handlePostCustomer({
+            id:id,
             name:name,
             lastName:lastName,
             email:email,
@@ -80,7 +90,7 @@ function CustomerForm() {
 
             <button type='submit' className='p-3 bg-green-500 text-yellow-800 text-xl
             w-1/3 mb-5 rounded-lg
-            uppercase font-bold'>Add User</button>
+            uppercase font-bold'>{text}</button>
         </form>
     
     </div>

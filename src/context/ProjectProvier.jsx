@@ -50,14 +50,27 @@ const ProjectProvider=({children})=>{
 
         console.log(customer);
         try {
-            const urlPost='https://localhost:7066/api/Customer/postCustomer';
-            const {data}=await axios.post(urlPost,customer);
-            console.log(data);
-            if(data.sucess==="200"){
-                alert(data.text);
+            if(customer.id===null){
+                const urlPost='https://localhost:7066/api/Customer/postCustomer';
+                const {data}=await axios.post(urlPost,customer);
+                console.log(data);
+                if(data.sucess==="200"){
+                    alert(data.text);
+                }else{
+                    alert(data.text);
+                }
             }else{
-                alert(data.text);
+                const urlPost=`https://localhost:7066/api/Customer/customerUpdate/${customer.id}`;
+                const {data}=await axios.put(urlPost,customer);
+                console.log(data);
+                if(data.sucess==="200"){
+                    alert(data.text);
+                }else{
+                    alert(data.text);
+                }
             }
+            
+            
 
         } catch (error) {
             console.log("Error: ",error);
@@ -73,7 +86,8 @@ const ProjectProvider=({children})=>{
                 customers:customers,
                 handlePostCustomer:handlePostCustomer,
                 handleSelectCustomer:handleSelectCustomer,
-                customerSelected:customerSelected
+                customerSelected:customerSelected,
+                setCustomerSelected:setCustomerSelected
             }
         }
         >
