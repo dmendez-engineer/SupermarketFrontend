@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 function CustomersList({customers}) {
 
-  const{handleSelectCustomer}=useProject();
+  const{handleSelectCustomer,handleDeleteCustomer}=useProject();
   
 
   return (
@@ -24,7 +24,14 @@ function CustomersList({customers}) {
         to={'customerRegister'}
         onClick={()=>handleSelectCustomer(customers)}
         >Update</Link>
-      </div>      
+        <button className='p-3 bg-gray-400 rounded-xl font-bold text-xl
+         hover:bg-gray-600 hover:text-white
+         ml-5
+         '
+         onClick={()=>handleDeleteCustomer(customers.id)}
+         >Delete</button>
+      </div>   
+   
       
     </div>
   )
